@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRFDMXXVN"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-DFRFDMXXVN');
+	</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Welcome | Kumar Kartikeya Dwivedi</title>
+	<link rel="stylesheet" href="/stylesheets/site.css">
+	<link rel="stylesheet" href="/stylesheets/blog.css">
+</head>
+<body>
+<div class="blog-shell toc-collapsed">
+	<button class="mobile-toc-toggle" type="button" aria-label="Open table of contents" aria-expanded="false" aria-controls="mobile-toc-overlay"></button>
+	<div class="mobile-toc-overlay" id="mobile-toc-overlay" hidden>
+		<div class="mobile-toc-panel">
+			<div class="mobile-toc-header">
+				<p class="sidebar-label">Table of Contents</p>
+				<button class="mobile-toc-close" type="button" aria-label="Close contents">×</button>
+			</div>
+			<ol class="toc">
+<li class="toc-item"><span>No sections yet</span></li>
+			</ol>
+		</div>
+	</div>
+	<button class="desktop-toc-toggle" type="button" aria-label="Show table of contents" aria-expanded="false"></button>
+	<aside class="blog-sidebar">
+		<div class="sidebar-inner">
+			<div class="sidebar-head">
+				<p class="sidebar-label">Table of Contents</p>
+				<button class="sidebar-collapse" type="button" aria-label="Hide table of contents">×</button>
+			</div>
+			<ol class="toc">
+<li class="toc-item"><span>No sections yet</span></li>
+			</ol>
+		</div>
+	</aside>
+	<main class="blog-main">
+		<header class="post-header">
+			<p class="back-link"><a href="/">Home</a> <span>/</span> <a href="/blog/">Blog</a></p>
+			<h1>Welcome</h1>
+			<p class="post-date">2026-04-09</p>
+		</header>
+		<article class="post-body">
+<p>This is the first post in the new <code>/blog</code> section.</p>
+		</article>
+		<p class="post-footer-nav"><a href="/">Home</a> <span>/</span> <a href="/blog/">Blog</a></p>
+	</main>
+</div>
+<script>
+const tocLinks = Array.from(document.querySelectorAll('.toc a'));
+const smoothHashLinks = Array.from(document.querySelectorAll('.heading-anchor, .footnote-ref a, .footnote-backref'));
+const footnoteLinks = Array.from(document.querySelectorAll('.footnote-ref a'));
+const codeCopyButtons = Array.from(document.querySelectorAll('.code-copy'));
+const mobileToggle = document.querySelector('.mobile-toc-toggle');
+const mobileOverlay = document.querySelector('.mobile-toc-overlay');
+const mobileClose = document.querySelector('.mobile-toc-close');
+const desktopToggle = document.querySelector('.desktop-toc-toggle');
+const sidebarCollapse = document.querySelector('.sidebar-collapse');
+const sidebarInner = document.querySelector('.sidebar-inner');
+const blogShell = document.querySelector('.blog-shell');
+const blogMain = document.querySelector('.blog-main');
+const headings = tocLinks
+  .map((link) => document.getElementById(link.getAttribute('href').slice(1)))
+  .filter(Boolean);
+
+const setOverlayOpen = (open) => {
+  if (!mobileToggle || !mobileOverlay) return;
+  mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  mobileOverlay.hidden = !open;
+  mobileOverlay.classList.toggle('open', open);
+};
+
+const footnotePopupOverlay = document.createElement('div');
+footnotePopupOverlay.className = 'footnote-popup-overlay';
+footnotePopupOverlay.hidden = true;
+const footnotePopup = document.createElement('div');
+footnotePopup.className = 'footnote-popup';
+footnotePopup.hidden = true;
+footnotePopup.innerHTML = '<div class="footnote-popup-body"></div>';
+document.body.appendChild(footnotePopupOverlay);
+document.body.appendChild(footnotePopup);
+
+const closeFootnotePopup = () => {
+  footnotePopupOverlay.hidden = true;
+  footnotePopupOverlay.classList.remove('open');
+  footnotePopup.hidden = true;
+  footnotePopup.classList.remove('open');
+  footnotePopup.style.removeProperty('left');
+  footnotePopup.style.removeProperty('top');
+};
+
+const openFootnotePopup = (link) => {
+  const preview = link.getAttribute('data-footnote-preview') || '';
+  const key = link.getAttribute('data-footnote-key') || '';
+  const number = link.getAttribute('data-footnote-number') || '';
+  footnotePopup.querySelector('.footnote-popup-body').innerHTML =
+    preview + ' <a class="footnote-popup-link" href="#fn-' + key + '" aria-label="Jump to note [' + number + ']">↪</a>';
+  if (window.innerWidth > 900) {
+    const rect = link.getBoundingClientRect();
+    footnotePopup.style.left = Math.min(rect.left + window.scrollX, window.scrollX + window.innerWidth - 320) + 'px';
+    footnotePopup.style.top = rect.bottom + window.scrollY + 10 + 'px';
+  }
+  footnotePopupOverlay.hidden = false;
+  requestAnimationFrame(() => footnotePopupOverlay.classList.add('open'));
+  footnotePopup.hidden = false;
+  requestAnimationFrame(() => footnotePopup.classList.add('open'));
+};
+
+for (const button of codeCopyButtons) {
+  const defaultLabel = '⧉';
+  button.textContent = defaultLabel;
+  button.addEventListener('click', async () => {
+    const block = button.closest('.code-block');
+    const code = block?.dataset.code || '';
+    if (!code) return;
+    try {
+      await navigator.clipboard.writeText(code);
+      button.classList.add('copied');
+      window.setTimeout(() => {
+        button.classList.remove('copied');
+      }, 1600);
+    } catch (_error) {
+      button.textContent = '!';
+      window.setTimeout(() => {
+        button.textContent = defaultLabel;
+      }, 1600);
+    }
+  });
+}
+
+if (mobileToggle && mobileOverlay && mobileClose) {
+  const syncToggleVisibility = () => {
+    mobileToggle.classList.toggle('visible', window.scrollY > 80);
+  };
+  mobileToggle.addEventListener('click', () => setOverlayOpen(true));
+  mobileClose.addEventListener('click', () => setOverlayOpen(false));
+  mobileOverlay.addEventListener('click', (event) => {
+    if (event.target === mobileOverlay) setOverlayOpen(false);
+  });
+  document.addEventListener('scroll', syncToggleVisibility, { passive: true });
+  window.addEventListener('load', syncToggleVisibility);
+  syncToggleVisibility();
+}
+
+const setDesktopTocCollapsed = (collapsed) => {
+  if (!blogShell || !desktopToggle) return;
+  blogShell.classList.toggle('toc-collapsed', collapsed);
+  desktopToggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+};
+
+if (desktopToggle && sidebarCollapse && blogShell && sidebarInner && blogMain) {
+  let sidebarControlsTimer = 0;
+  let desktopToggleTimer = 0;
+  const showSidebarControls = () => {
+    window.clearTimeout(sidebarControlsTimer);
+    sidebarInner.classList.add('controls-visible');
+  };
+  const hideSidebarControlsSoon = () => {
+    window.clearTimeout(sidebarControlsTimer);
+    sidebarControlsTimer = window.setTimeout(() => {
+      sidebarInner.classList.remove('controls-visible');
+    }, 1800);
+  };
+  const showDesktopToggle = () => {
+    window.clearTimeout(desktopToggleTimer);
+    desktopToggle.classList.add('visible');
+  };
+  const hideDesktopToggleSoon = () => {
+    window.clearTimeout(desktopToggleTimer);
+    desktopToggleTimer = window.setTimeout(() => {
+      desktopToggle.classList.remove('visible');
+    }, 1800);
+  };
+  const syncDesktopToggleVisibility = () => {
+    if (!blogShell.classList.contains('toc-collapsed')) {
+      desktopToggle.classList.remove('visible');
+      return;
+    }
+    showDesktopToggle();
+    hideDesktopToggleSoon();
+  };
+  const syncDesktopToggleHotzone = (event) => {
+    if (!blogShell.classList.contains('toc-collapsed')) return;
+    const articleRect = blogMain.getBoundingClientRect();
+    if (event.clientX <= articleRect.left) {
+      showDesktopToggle();
+      hideDesktopToggleSoon();
+    } else if (!desktopToggle.matches(':hover, :focus-visible')) {
+      hideDesktopToggleSoon();
+    }
+  };
+  const hideDesktopToggleOnScroll = () => {
+    if (!blogShell.classList.contains('toc-collapsed')) return;
+    if (desktopToggle.matches(':hover, :focus-visible')) return;
+    window.clearTimeout(desktopToggleTimer);
+    desktopToggle.classList.remove('visible');
+  };
+
+  desktopToggle.addEventListener('click', () => setDesktopTocCollapsed(false));
+  desktopToggle.addEventListener('mouseenter', showDesktopToggle);
+  desktopToggle.addEventListener('mouseleave', hideDesktopToggleSoon);
+  desktopToggle.addEventListener('focusin', showDesktopToggle);
+  desktopToggle.addEventListener('focusout', hideDesktopToggleSoon);
+  sidebarCollapse.addEventListener('click', () => {
+    setDesktopTocCollapsed(true);
+    syncDesktopToggleVisibility();
+  });
+  sidebarInner.addEventListener('mouseenter', showSidebarControls);
+  sidebarInner.addEventListener('mousemove', showSidebarControls);
+  sidebarInner.addEventListener('mouseleave', hideSidebarControlsSoon);
+  sidebarInner.addEventListener('focusin', showSidebarControls);
+  sidebarInner.addEventListener('focusout', () => {
+    window.setTimeout(() => {
+      if (!sidebarInner.contains(document.activeElement)) hideSidebarControlsSoon();
+    }, 0);
+  });
+  showSidebarControls();
+  hideSidebarControlsSoon();
+  document.addEventListener('scroll', hideDesktopToggleOnScroll, { passive: true });
+  document.addEventListener('mousemove', syncDesktopToggleHotzone, { passive: true });
+}
+
+if (tocLinks.length && headings.length) {
+  let pinnedId = "";
+  let ignoreScrollUntil = 0;
+  const revealTocLink = (link) => {
+    const container = link.closest('.sidebar-inner, .mobile-toc-panel');
+    if (!container) return;
+    const buffer = 56;
+    const containerRect = container.getBoundingClientRect();
+    const linkRect = link.getBoundingClientRect();
+    const linkTop = linkRect.top - containerRect.top + container.scrollTop;
+    const linkBottom = linkTop + linkRect.height;
+    const visibleTop = container.scrollTop + buffer;
+    const visibleBottom = container.scrollTop + container.clientHeight - buffer;
+    if (linkTop < visibleTop) {
+      container.scrollTo({
+        top: Math.max(0, linkTop - buffer),
+        behavior: 'smooth',
+      });
+    } else if (linkBottom > visibleBottom) {
+      container.scrollTo({
+        top: Math.min(container.scrollHeight - container.clientHeight, linkBottom - container.clientHeight + buffer),
+        behavior: 'smooth',
+      });
+    }
+  };
+  const navigateToId = (id, options = {}) => {
+    const target = document.getElementById(id);
+    if (!target) return;
+    if (options.pinToc) {
+      pinnedId = id;
+      ignoreScrollUntil = Date.now() + 400;
+      setActive(id);
+    }
+    history.replaceState(null, '', '#' + id);
+    target.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  };
+  const setActive = (id) => {
+    for (const link of tocLinks) {
+      const active = link.getAttribute('href') === '#' + id;
+      link.classList.toggle('active', active);
+      if (active) {
+        revealTocLink(link);
+      }
+    }
+  };
+
+  const syncActive = () => {
+    if (Date.now() < ignoreScrollUntil && pinnedId) {
+      setActive(pinnedId);
+      return;
+    }
+    const hashId = decodeURIComponent(window.location.hash.slice(1));
+    if (hashId) {
+      pinnedId = hashId;
+      const hashHeading = document.getElementById(hashId);
+      if (hashHeading) {
+        const rect = hashHeading.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.6 && rect.bottom >= 80) {
+          setActive(hashHeading.id);
+          return;
+        }
+      }
+    }
+    let current = headings[0];
+    for (const heading of headings) {
+      if (heading.getBoundingClientRect().top <= 120) current = heading;
+    }
+    setActive(current.id);
+  };
+  for (const link of tocLinks) {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const id = link.getAttribute('href').slice(1);
+      setOverlayOpen(false);
+      navigateToId(id, { pinToc: true });
+    });
+  }
+  for (const link of smoothHashLinks) {
+    link.addEventListener('click', (event) => {
+      const href = link.getAttribute('href') || '';
+      if (!href.startsWith('#')) return;
+      if (link.closest('.footnote-ref')) return;
+      const id = href.slice(1);
+      if (!id) return;
+      event.preventDefault();
+      navigateToId(id);
+    });
+  }
+  for (const link of footnoteLinks) {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (!footnotePopup.hidden && footnotePopup.dataset.anchor === link.getAttribute('href')) {
+        closeFootnotePopup();
+        return;
+      }
+      footnotePopup.dataset.anchor = link.getAttribute('href') || '';
+      openFootnotePopup(link);
+    });
+  }
+  footnotePopup.addEventListener('click', (event) => {
+    const jump = event.target.closest('.footnote-popup-link');
+    if (!jump) return;
+    const href = jump.getAttribute('href') || '';
+    if (!href.startsWith('#')) return;
+    event.preventDefault();
+    closeFootnotePopup();
+    navigateToId(href.slice(1));
+  });
+  document.addEventListener('click', (event) => {
+    if (footnotePopup.hidden) return;
+    if (footnotePopup.contains(event.target)) return;
+    if (event.target.closest('.footnote-ref')) return;
+    closeFootnotePopup();
+  });
+  footnotePopupOverlay.addEventListener('click', closeFootnotePopup);
+  window.addEventListener('resize', closeFootnotePopup);
+  window.addEventListener('hashchange', closeFootnotePopup);
+  document.addEventListener('scroll', syncActive, { passive: true });
+  window.addEventListener('hashchange', syncActive);
+  window.addEventListener('load', syncActive);
+  syncActive();
+}
+</script>
+
+<script src="/scripts/site.js"></script>
+</body>
+</html>
