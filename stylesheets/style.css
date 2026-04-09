@@ -1,6 +1,6 @@
 body {
 	padding-top: 1em;
-	font-family: "Georgia", serif;
+	font-family: "Iowan Old Style", serif;
 	font-size: 1.3em;
 	text-align: center;
 
@@ -17,17 +17,28 @@ h1, h2 {
 	font-weight: normal;
 }
 
+article p {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.3em;
+	line-height: 1.6;
+}
+
 a {
-	font-size: 0.8em;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35em;
+	font-size: 0.9em;
 	background: #3357AB;
-	padding: 1px 5px 1px 5px;
+	padding: 2px 7px 2px 6px;
 	text-decoration: none;
 	border-radius: 4px;
 }
 
 a:hover {
 	background: #687DB0;
-	padding: 1px 5px 1px 5px;
+	padding: 2px 7px 2px 6px;
 	text-decoration: none;
 	border-radius: 4px;
 }
@@ -38,4 +49,30 @@ a:link {
 
 a:visited {
 	color: #fff;
+}
+
+a svg {
+	width: 0.95em;
+	height: 0.95em;
+	fill: currentColor;
+	flex: none;
+}
+
+@media (max-width: 640px) {
+	body {
+		width: min(30rem, calc(100vw - 3rem));
+		height: auto;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		margin: 0;
+		padding: 2.5em 1.5em;
+		font-size: 1.05em;
+		text-align: center;
+	}
+
+	h1 {
+		font-size: 1.75em;
+	}
 }
