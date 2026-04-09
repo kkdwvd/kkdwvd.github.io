@@ -51,11 +51,31 @@ a:visited {
 	color: #fff;
 }
 
-a svg {
+.icon {
+	display: inline-block;
 	width: 0.95em;
 	height: 0.95em;
-	fill: currentColor;
+	background: currentColor;
 	flex: none;
+}
+
+.icon-linkedin {
+	-webkit-mask: url("/icons/linkedin.svg") center / contain no-repeat;
+	mask: url("/icons/linkedin.svg") center / contain no-repeat;
+}
+
+.icon-google-scholar {
+	-webkit-mask: url("/icons/google-scholar.svg") center / contain no-repeat;
+	mask: url("/icons/google-scholar.svg") center / contain no-repeat;
+	width: 1em;
+	height: 1em;
+}
+
+.icon-email {
+	-webkit-mask: url("/icons/email.svg") center / contain no-repeat;
+	mask: url("/icons/email.svg") center / contain no-repeat;
+	width: 1em;
+	height: 1em;
 }
 
 @media (max-width: 640px) {
