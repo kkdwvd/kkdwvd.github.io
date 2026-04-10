@@ -132,6 +132,7 @@ def render_markdown(lines: Iterable[str]) -> tuple[str, list[Heading]]:
     list_type: str | None = None
     code_lines: list[str] = []
     code_lang = ""
+    quote_lines: list[str] = []
     footnote_defs: dict[str, str] = {}
     footnote_order: list[str] = []
     footnote_numbers: dict[str, int] = {}
@@ -170,6 +171,13 @@ def render_markdown(lines: Iterable[str]) -> tuple[str, list[Heading]]:
             code_lines = []
             code_lang = ""
 
+    def flush_quote() -> None:
+        nonlocal quote_lines
+        if quote_lines:
+            text = " ".join(part.strip() for part in quote_lines).strip()
+            out.append(f"<blockquote><p>{render_inline(text, footnote_numbers, footnote_order, footnote_defs)}</p></blockquote>")
+            quote_lines = []
+
     used_ids: dict[str, int] = {}
     in_code = False
 
@@ -187,6 +195,7 @@ def render_markdown(lines: Iterable[str]) -> tuple[str, list[Heading]]:
         if line.startswith("```"):
             flush_paragraph()
             flush_list()
+            flush_quote()
             in_code = True
             code_lang = line[3:].strip()
             continue
@@ -194,18 +203,21 @@ def render_markdown(lines: Iterable[str]) -> tuple[str, list[Heading]]:
         if not line.strip():
             flush_paragraph()
             flush_list()
+            flush_quote()
             continue
 
         footnote_match = re.match(r"^\[\^([^\]]+)\]:\s+(.*)$", line)
         if footnote_match:
             flush_paragraph()
             flush_list()
+            flush_quote()
             continue
 
         heading_match = re.match(r"^(#{1,6})\s+(.*)$", line)
         if heading_match:
             flush_paragraph()
             flush_list()
+            flush_quote()
             level = len(heading_match.group(1))
             text = heading_match.group(2).strip()
             base = slugify(text)
@@ -228,6 +240,7 @@ def render_markdown(lines: Iterable[str]) -> tuple[str, list[Heading]]:
         ol_match = re.match(r"^\d+\.\s+(.*)$", line)
         if ul_match or ol_match:
             flush_paragraph()
+            flush_quote()
             next_type = "ul" if ul_match else "ol"
             if list_type and list_type != next_type:
                 flush_list()
@@ -238,10 +251,18 @@ def render_markdown(lines: Iterable[str]) -> tuple[str, list[Heading]]:
             out.append(f"<li>{render_inline(item.strip(), footnote_numbers, footnote_order, footnote_defs)}</li>")
             continue
 
+        quote_match = re.match(r"^>\s?(.*)$", line)
+        if quote_match:
+            flush_paragraph()
+            flush_list()
+            quote_lines.append(quote_match.group(1))
+            continue
+
         paragraph.append(line)
 
     flush_paragraph()
     flush_list()
+    flush_quote()
     flush_code()
     if footnote_order:
         note_items = []

@@ -338,12 +338,46 @@ a:hover {
 	color: #3357AB;
 }
 
+.post-body p a,
+.post-body li a,
+.post-body blockquote a {
+	color: #294f9f;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(41, 79, 159, 0.28);
+	transition: color 120ms ease, border-color 120ms ease;
+}
+
+.post-body p a:hover,
+.post-body li a:hover,
+.post-body blockquote a:hover {
+	color: #3357AB;
+	border-bottom-color: rgba(51, 87, 171, 0.58);
+}
+
 .post-body p,
 .post-body ul,
 .post-body ol,
 .post-body pre {
 	max-width: 46rem;
 	margin: 0.85rem 0;
+}
+
+.post-body blockquote {
+	position: relative;
+	max-width: 42rem;
+	margin: 1.6rem auto;
+	padding: 1rem 1.2rem 1rem 1.6rem;
+	border: 1px solid #dbe3f1;
+	border-radius: 0.75rem;
+	background: #f7f9fd;
+	color: #3f4857;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.post-body blockquote p {
+	margin: 0;
+	font-size: 1.2rem;
+	line-height: 1.62;
 }
 
 .post-body p:has(img) {
