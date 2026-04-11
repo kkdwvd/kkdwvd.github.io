@@ -11,10 +11,10 @@ html {
 	--blog-h4-size: 1.1rem;
 	--blog-h5-size: 1rem;
 	--blog-caption-size: 0.94rem;
-	--blog-quote-size: 1rem;
+	--blog-quote-size: 1em;
 	--blog-footnote-popup-size: 0.9rem;
-	--blog-inline-code-size: 0.74em;
-	--blog-block-code-size: 0.68rem;
+	--blog-inline-code-size: 0.72em;
+	--blog-block-code-size: 0.64rem;
 }
 
 body {
@@ -288,7 +288,7 @@ a:hover {
 .post-body blockquote p {
 	margin: 0;
 	font-size: var(--blog-quote-size);
-	line-height: var(--blog-body-line-height);
+	line-height: inherit;
 }
 
 .post-body p:has(img) {
@@ -652,10 +652,10 @@ a:hover {
 		--blog-h4-size: 1.22rem;
 		--blog-h5-size: 1.08rem;
 		--blog-caption-size: 1rem;
-		--blog-quote-size: 1.08rem;
+		--blog-quote-size: 1em;
 		--blog-footnote-popup-size: 0.98rem;
-		--blog-inline-code-size: 0.7em;
-		--blog-block-code-size: 0.72rem;
+		--blog-inline-code-size: 0.76em;
+		--blog-block-code-size: 0.82rem;
 	}
 
 	.blog-shell,
