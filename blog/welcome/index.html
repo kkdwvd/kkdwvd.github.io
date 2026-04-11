@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="/stylesheets/blog.css">
 </head>
 <body>
-<div class="blog-shell toc-collapsed">
+<div class="blog-shell">
 	<button class="mobile-toc-toggle" type="button" aria-label="Open table of contents" aria-expanded="false" aria-controls="mobile-toc-overlay"></button>
 	<div class="mobile-toc-overlay" id="mobile-toc-overlay" hidden>
 		<div class="mobile-toc-panel">
@@ -26,19 +26,27 @@
 				<button class="mobile-toc-close" type="button" aria-label="Close contents">×</button>
 			</div>
 			<ol class="toc">
-<li class="toc-item"><span>No sections yet</span></li>
+<li class="toc-item"><a href="#why-this-exists">Why this exists</a></li>
+<li class="toc-item"><a href="#notes-and-quotations">Notes and quotations</a></li>
+<li class="toc-item"><a href="#code-and-examples">Code and examples</a></li>
+<li class="toc-item"><a href="#reading-flow">Reading flow</a></li>
+<li class="toc-item toc-depth-3"><a href="#a-small-subsection">A small subsection</a></li>
+<li class="toc-item"><a href="#footnotes">Footnotes</a></li>
 			</ol>
 		</div>
 	</div>
-	<button class="desktop-toc-toggle" type="button" aria-label="Show table of contents" aria-expanded="false"></button>
 	<aside class="blog-sidebar">
 		<div class="sidebar-inner">
 			<div class="sidebar-head">
 				<p class="sidebar-label">Table of Contents</p>
-				<button class="sidebar-collapse" type="button" aria-label="Hide table of contents">×</button>
 			</div>
 			<ol class="toc">
-<li class="toc-item"><span>No sections yet</span></li>
+<li class="toc-item"><a href="#why-this-exists">Why this exists</a></li>
+<li class="toc-item"><a href="#notes-and-quotations">Notes and quotations</a></li>
+<li class="toc-item"><a href="#code-and-examples">Code and examples</a></li>
+<li class="toc-item"><a href="#reading-flow">Reading flow</a></li>
+<li class="toc-item toc-depth-3"><a href="#a-small-subsection">A small subsection</a></li>
+<li class="toc-item"><a href="#footnotes">Footnotes</a></li>
 			</ol>
 		</div>
 	</aside>
@@ -49,10 +57,48 @@
 			<p class="post-date">2026-04-09</p>
 		</header>
 		<article class="post-body">
-<p>This is the first post in the new <code>/blog</code> section. It exists as a small home for essays written in markdown and rendered into plain static HTML. For now, the <a href="/">homepage</a> stays sparse while the blog grows quietly.</p>
-<blockquote><p>This block can carry either a quotation or a short note, with enough visual separation to stand on its own without overwhelming the page.</p></blockquote>
+<h2 id="why-this-exists">Why this exists<a class="heading-anchor" href="#why-this-exists" aria-label="Link to Why this exists">¶</a></h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vulputate rhoncus ullamcorper. Sed condimentum, risus sit amet suscipit imperdiet, dolor nisl posuere velit, et interdum mauris neque at velit.<sup class="footnote-ref" id="fnref-welcome-note"><a href="#fn-welcome-note" data-footnote-preview="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." data-footnote-key="welcome-note" data-footnote-number="1">[1]</a></sup></p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat, metus a lobortis blandit, tortor neque tempor neque, ut bibendum justo neque vitae erat. Pellentesque viverra feugiat neque, ut ultrices lacus sollicitudin nec.</p>
+<h2 id="notes-and-quotations">Notes and quotations<a class="heading-anchor" href="#notes-and-quotations" aria-label="Link to Notes and quotations">¶</a></h2>
+<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent semper fermentum ipsum, eget fringilla purus sodales vel.</p></blockquote>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius finibus semper. Aenean at ligula id libero iaculis interdum. Vestibulum ut nibh a enim interdum commodo.<sup class="footnote-ref" id="fnref-notes-footnote"><a href="#fn-notes-footnote" data-footnote-preview="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." data-footnote-key="notes-footnote" data-footnote-number="2">[2]</a></sup></p>
+<h2 id="code-and-examples">Code and examples<a class="heading-anchor" href="#code-and-examples" aria-label="Link to Code and examples">¶</a></h2>
+<div class="code-block" data-code="fn fib(n: u32) -&gt; u64 {
+    match n {
+        0 =&gt; 0,
+        1 =&gt; 1,
+        _ =&gt; fib(n - 1) + fib(n - 2),
+    }
+}
+
+fn main() {
+    for n in 0..10 {
+        println!(&quot;fib({n}) = {}&quot;, fib(n));
+    }
+}"><button class="code-copy" type="button" aria-label="Copy code">⧉</button><pre><code class="language-rust"><span class="tok-keyword">fn</span> fib(n: u32) -&gt; u64 {
+    <span class="tok-keyword">match</span> n {
+        <span class="tok-number">0</span> =&gt; <span class="tok-number">0</span>,
+        <span class="tok-number">1</span> =&gt; <span class="tok-number">1</span>,
+        _ =&gt; fib(n - <span class="tok-number">1</span>) + fib(n - <span class="tok-number">2</span>),
+    }
+}
+
+<span class="tok-keyword">fn</span> main() {
+    <span class="tok-keyword">for</span> n in <span class="tok-number">0</span>..<span class="tok-number">10</span> {
+        println!(<span class="tok-string">&quot;fib({n}) = {}&quot;</span>, fib(n));
+    }
+}</code></pre></div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare ullamcorper turpis, vitae pharetra sapien fermentum sit amet.</p>
+<h2 id="reading-flow">Reading flow<a class="heading-anchor" href="#reading-flow" aria-label="Link to Reading flow">¶</a></h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vulputate rhoncus ullamcorper. Sed condimentum, risus sit amet suscipit imperdiet, dolor nisl posuere velit, et interdum mauris neque at velit. Integer ac posuere mauris. Sed vitae orci consequat, suscipit justo vel, scelerisque lorem.</p>
+<h3 id="a-small-subsection">A small subsection<a class="heading-anchor" href="#a-small-subsection" aria-label="Link to A small subsection">¶</a></h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat, metus a lobortis blandit, tortor neque tempor neque, ut bibendum justo neque vitae erat. Pellentesque viverra feugiat neque, ut ultrices lacus sollicitudin nec.</p>
+<h2 id="footnotes">Footnotes<a class="heading-anchor" href="#footnotes" aria-label="Link to Footnotes">¶</a></h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dapibus maximus arcu, vitae eleifend neque volutpat vel. Sed tincidunt posuere consequat.<sup class="footnote-ref" id="fnref-preview-note"><a href="#fn-preview-note" data-footnote-preview="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." data-footnote-key="preview-note" data-footnote-number="3">[3]</a></sup></p>
+<section class="footnotes"><p class="footnotes-label">Footnotes</p><ol><li id="fn-welcome-note"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a class="footnote-backref" href="#fnref-welcome-note" aria-label="Back to reference">↩</a></p></li><li id="fn-notes-footnote"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a class="footnote-backref" href="#fnref-notes-footnote" aria-label="Back to reference">↩</a></p></li><li id="fn-preview-note"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a class="footnote-backref" href="#fnref-preview-note" aria-label="Back to reference">↩</a></p></li></ol></section>
 		</article>
-		<p class="post-footer-nav"><a href="/">Home</a> <span>/</span> <a href="/blog/">Blog</a></p>
+		<p class="post-footer-nav"><a href="/blog/">← Back</a></p>
 	</main>
 </div>
 <script>
@@ -63,11 +109,6 @@ const codeCopyButtons = Array.from(document.querySelectorAll('.code-copy'));
 const mobileToggle = document.querySelector('.mobile-toc-toggle');
 const mobileOverlay = document.querySelector('.mobile-toc-overlay');
 const mobileClose = document.querySelector('.mobile-toc-close');
-const desktopToggle = document.querySelector('.desktop-toc-toggle');
-const sidebarCollapse = document.querySelector('.sidebar-collapse');
-const sidebarInner = document.querySelector('.sidebar-inner');
-const blogShell = document.querySelector('.blog-shell');
-const blogMain = document.querySelector('.blog-main');
 const headings = tocLinks
   .map((link) => document.getElementById(link.getAttribute('href').slice(1)))
   .filter(Boolean);
@@ -149,84 +190,6 @@ if (mobileToggle && mobileOverlay && mobileClose) {
   document.addEventListener('scroll', syncToggleVisibility, { passive: true });
   window.addEventListener('load', syncToggleVisibility);
   syncToggleVisibility();
-}
-
-const setDesktopTocCollapsed = (collapsed) => {
-  if (!blogShell || !desktopToggle) return;
-  blogShell.classList.toggle('toc-collapsed', collapsed);
-  desktopToggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
-};
-
-if (desktopToggle && sidebarCollapse && blogShell && sidebarInner && blogMain) {
-  let sidebarControlsTimer = 0;
-  let desktopToggleTimer = 0;
-  const showSidebarControls = () => {
-    window.clearTimeout(sidebarControlsTimer);
-    sidebarInner.classList.add('controls-visible');
-  };
-  const hideSidebarControlsSoon = () => {
-    window.clearTimeout(sidebarControlsTimer);
-    sidebarControlsTimer = window.setTimeout(() => {
-      sidebarInner.classList.remove('controls-visible');
-    }, 1800);
-  };
-  const showDesktopToggle = () => {
-    window.clearTimeout(desktopToggleTimer);
-    desktopToggle.classList.add('visible');
-  };
-  const hideDesktopToggleSoon = () => {
-    window.clearTimeout(desktopToggleTimer);
-    desktopToggleTimer = window.setTimeout(() => {
-      desktopToggle.classList.remove('visible');
-    }, 1800);
-  };
-  const syncDesktopToggleVisibility = () => {
-    if (!blogShell.classList.contains('toc-collapsed')) {
-      desktopToggle.classList.remove('visible');
-      return;
-    }
-    showDesktopToggle();
-    hideDesktopToggleSoon();
-  };
-  const syncDesktopToggleHotzone = (event) => {
-    if (!blogShell.classList.contains('toc-collapsed')) return;
-    const articleRect = blogMain.getBoundingClientRect();
-    if (event.clientX <= articleRect.left) {
-      showDesktopToggle();
-      hideDesktopToggleSoon();
-    } else if (!desktopToggle.matches(':hover, :focus-visible')) {
-      hideDesktopToggleSoon();
-    }
-  };
-  const hideDesktopToggleOnScroll = () => {
-    if (!blogShell.classList.contains('toc-collapsed')) return;
-    if (desktopToggle.matches(':hover, :focus-visible')) return;
-    window.clearTimeout(desktopToggleTimer);
-    desktopToggle.classList.remove('visible');
-  };
-
-  desktopToggle.addEventListener('click', () => setDesktopTocCollapsed(false));
-  desktopToggle.addEventListener('mouseenter', showDesktopToggle);
-  desktopToggle.addEventListener('mouseleave', hideDesktopToggleSoon);
-  desktopToggle.addEventListener('focusin', showDesktopToggle);
-  desktopToggle.addEventListener('focusout', hideDesktopToggleSoon);
-  sidebarCollapse.addEventListener('click', () => {
-    setDesktopTocCollapsed(true);
-    syncDesktopToggleVisibility();
-  });
-  sidebarInner.addEventListener('mouseenter', showSidebarControls);
-  sidebarInner.addEventListener('mousemove', showSidebarControls);
-  sidebarInner.addEventListener('mouseleave', hideSidebarControlsSoon);
-  sidebarInner.addEventListener('focusin', showSidebarControls);
-  sidebarInner.addEventListener('focusout', () => {
-    window.setTimeout(() => {
-      if (!sidebarInner.contains(document.activeElement)) hideSidebarControlsSoon();
-    }, 0);
-  });
-  showSidebarControls();
-  hideSidebarControlsSoon();
-  document.addEventListener('scroll', hideDesktopToggleOnScroll, { passive: true });
-  document.addEventListener('mousemove', syncDesktopToggleHotzone, { passive: true });
 }
 
 if (tocLinks.length && headings.length) {

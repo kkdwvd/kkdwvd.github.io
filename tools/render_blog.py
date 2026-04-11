@@ -360,7 +360,7 @@ def render_post(post: Post) -> str:
         )
     toc_html = "\n".join(toc_items) if toc_items else '<li class="toc-item"><span>No sections yet</span></li>'
     date_html = f'<p class="post-date">{html.escape(post.date)}</p>' if post.date else ""
-    content = f"""<div class="blog-shell toc-collapsed">
+    content = f"""<div class="blog-shell">
 \t<button class="mobile-toc-toggle" type="button" aria-label="Open table of contents" aria-expanded="false" aria-controls="mobile-toc-overlay"></button>
 \t<div class="mobile-toc-overlay" id="mobile-toc-overlay" hidden>
 \t\t<div class="mobile-toc-panel">
@@ -373,12 +373,10 @@ def render_post(post: Post) -> str:
 \t\t\t</ol>
 \t\t</div>
 \t</div>
-\t<button class="desktop-toc-toggle" type="button" aria-label="Show table of contents" aria-expanded="false"></button>
 \t<aside class="blog-sidebar">
 \t\t<div class="sidebar-inner">
 \t\t\t<div class="sidebar-head">
 \t\t\t\t<p class="sidebar-label">Table of Contents</p>
-\t\t\t\t<button class="sidebar-collapse" type="button" aria-label="Hide table of contents">×</button>
 \t\t\t</div>
 \t\t\t<ol class="toc">
 {toc_html}
@@ -394,7 +392,7 @@ def render_post(post: Post) -> str:
 \t\t<article class="post-body">
 {post.body_html}
 \t\t</article>
-\t\t<p class="post-footer-nav"><a href="/">Home</a> <span>/</span> <a href="/blog/">Blog</a></p>
+\t\t<p class="post-footer-nav"><a href="/blog/">← Back</a></p>
 \t</main>
 </div>
 <script>
@@ -405,11 +403,6 @@ const codeCopyButtons = Array.from(document.querySelectorAll('.code-copy'));
 const mobileToggle = document.querySelector('.mobile-toc-toggle');
 const mobileOverlay = document.querySelector('.mobile-toc-overlay');
 const mobileClose = document.querySelector('.mobile-toc-close');
-const desktopToggle = document.querySelector('.desktop-toc-toggle');
-const sidebarCollapse = document.querySelector('.sidebar-collapse');
-const sidebarInner = document.querySelector('.sidebar-inner');
-const blogShell = document.querySelector('.blog-shell');
-const blogMain = document.querySelector('.blog-main');
 const headings = tocLinks
   .map((link) => document.getElementById(link.getAttribute('href').slice(1)))
   .filter(Boolean);
@@ -491,84 +484,6 @@ if (mobileToggle && mobileOverlay && mobileClose) {{
   document.addEventListener('scroll', syncToggleVisibility, {{ passive: true }});
   window.addEventListener('load', syncToggleVisibility);
   syncToggleVisibility();
-}}
-
-const setDesktopTocCollapsed = (collapsed) => {{
-  if (!blogShell || !desktopToggle) return;
-  blogShell.classList.toggle('toc-collapsed', collapsed);
-  desktopToggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
-}};
-
-if (desktopToggle && sidebarCollapse && blogShell && sidebarInner && blogMain) {{
-  let sidebarControlsTimer = 0;
-  let desktopToggleTimer = 0;
-  const showSidebarControls = () => {{
-    window.clearTimeout(sidebarControlsTimer);
-    sidebarInner.classList.add('controls-visible');
-  }};
-  const hideSidebarControlsSoon = () => {{
-    window.clearTimeout(sidebarControlsTimer);
-    sidebarControlsTimer = window.setTimeout(() => {{
-      sidebarInner.classList.remove('controls-visible');
-    }}, 1800);
-  }};
-  const showDesktopToggle = () => {{
-    window.clearTimeout(desktopToggleTimer);
-    desktopToggle.classList.add('visible');
-  }};
-  const hideDesktopToggleSoon = () => {{
-    window.clearTimeout(desktopToggleTimer);
-    desktopToggleTimer = window.setTimeout(() => {{
-      desktopToggle.classList.remove('visible');
-    }}, 1800);
-  }};
-  const syncDesktopToggleVisibility = () => {{
-    if (!blogShell.classList.contains('toc-collapsed')) {{
-      desktopToggle.classList.remove('visible');
-      return;
-    }}
-    showDesktopToggle();
-    hideDesktopToggleSoon();
-  }};
-  const syncDesktopToggleHotzone = (event) => {{
-    if (!blogShell.classList.contains('toc-collapsed')) return;
-    const articleRect = blogMain.getBoundingClientRect();
-    if (event.clientX <= articleRect.left) {{
-      showDesktopToggle();
-      hideDesktopToggleSoon();
-    }} else if (!desktopToggle.matches(':hover, :focus-visible')) {{
-      hideDesktopToggleSoon();
-    }}
-  }};
-  const hideDesktopToggleOnScroll = () => {{
-    if (!blogShell.classList.contains('toc-collapsed')) return;
-    if (desktopToggle.matches(':hover, :focus-visible')) return;
-    window.clearTimeout(desktopToggleTimer);
-    desktopToggle.classList.remove('visible');
-  }};
-
-  desktopToggle.addEventListener('click', () => setDesktopTocCollapsed(false));
-  desktopToggle.addEventListener('mouseenter', showDesktopToggle);
-  desktopToggle.addEventListener('mouseleave', hideDesktopToggleSoon);
-  desktopToggle.addEventListener('focusin', showDesktopToggle);
-  desktopToggle.addEventListener('focusout', hideDesktopToggleSoon);
-  sidebarCollapse.addEventListener('click', () => {{
-    setDesktopTocCollapsed(true);
-    syncDesktopToggleVisibility();
-  }});
-  sidebarInner.addEventListener('mouseenter', showSidebarControls);
-  sidebarInner.addEventListener('mousemove', showSidebarControls);
-  sidebarInner.addEventListener('mouseleave', hideSidebarControlsSoon);
-  sidebarInner.addEventListener('focusin', showSidebarControls);
-  sidebarInner.addEventListener('focusout', () => {{
-    window.setTimeout(() => {{
-      if (!sidebarInner.contains(document.activeElement)) hideSidebarControlsSoon();
-    }}, 0);
-  }});
-  showSidebarControls();
-  hideSidebarControlsSoon();
-  document.addEventListener('scroll', hideDesktopToggleOnScroll, {{ passive: true }});
-  document.addEventListener('mousemove', syncDesktopToggleHotzone, {{ passive: true }});
 }}
 
 if (tocLinks.length && headings.length) {{
