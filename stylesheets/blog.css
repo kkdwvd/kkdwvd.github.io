@@ -13,8 +13,8 @@ html {
 	--blog-caption-size: 0.94rem;
 	--blog-quote-size: 1em;
 	--blog-footnote-popup-size: 0.9rem;
-	--blog-inline-code-size: 0.72em;
-	--blog-block-code-size: 0.64rem;
+	--blog-inline-code-size: 0.68em;
+	--blog-block-code-size: 0.6rem;
 }
 
 body {
