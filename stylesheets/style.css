@@ -3,7 +3,7 @@ body {
 	background: #fff;
 	color: #111;
 	font-family: var(--site-serif, "Times New Roman", Times, serif);
-	font-size: 16px;
+	font-size: calc(16px + var(--site-font-bump, 0px));
 	line-height: 1.4;
 }
 
@@ -22,7 +22,7 @@ h1, h2 {
 
 h1 {
 	margin: 0 0 0.45rem;
-	font-size: 2.05rem;
+	font-size: calc(2.05rem + var(--site-font-bump, 0px));
 	line-height: 1.04;
 }
 
@@ -32,7 +32,7 @@ h1 {
 	justify-content: center;
 	gap: 0.45em;
 	margin-top: 0.4rem;
-	font-size: 1.16rem;
+	font-size: calc(1.16rem + var(--site-font-bump, 0px));
 	line-height: 1.4;
 }
 
@@ -53,7 +53,7 @@ a:hover {
 
 @media (max-width: 640px) {
 	body {
-		font-size: 19px;
+		font-size: calc(19px + var(--site-font-bump, 0px));
 	}
 
 	article {
@@ -65,10 +65,10 @@ a:hover {
 	}
 
 	.home-links {
-		font-size: 1.26rem;
+		font-size: calc(1.26rem + var(--site-font-bump, 0px));
 	}
 
 	h1 {
-		font-size: 2.08rem;
+		font-size: calc(2.08rem + var(--site-font-bump, 0px));
 	}
 }

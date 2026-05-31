@@ -1,18 +1,22 @@
 html {
-	--blog-body-size: 16px;
+	--blog-body-size: calc(16px + var(--site-font-bump, 0px));
 	--blog-body-line-height: 1.4;
-	--blog-meta-size: 1.08rem;
-	--blog-toc-size: 1.08rem;
-	--blog-page-title-size: clamp(2rem, 4vw, 2.55rem);
-	--blog-card-title-size: 1.28rem;
-	--blog-h1-size: 1.75rem;
-	--blog-h2-size: 1.35rem;
-	--blog-h3-size: 1.22rem;
-	--blog-h4-size: 1.1rem;
-	--blog-h5-size: 1rem;
-	--blog-caption-size: 0.94rem;
+	--blog-meta-size: calc(1.08rem + var(--site-font-bump, 0px));
+	--blog-toc-size: calc(1.08rem + var(--site-font-bump, 0px));
+	--blog-page-title-size: clamp(
+		calc(2rem + var(--site-font-bump, 0px)),
+		calc(4vw + var(--site-font-bump, 0px)),
+		calc(2.55rem + var(--site-font-bump, 0px))
+	);
+	--blog-card-title-size: calc(1.28rem + var(--site-font-bump, 0px));
+	--blog-h1-size: calc(1.75rem + var(--site-font-bump, 0px));
+	--blog-h2-size: calc(1.35rem + var(--site-font-bump, 0px));
+	--blog-h3-size: calc(1.22rem + var(--site-font-bump, 0px));
+	--blog-h4-size: calc(1.1rem + var(--site-font-bump, 0px));
+	--blog-h5-size: calc(1rem + var(--site-font-bump, 0px));
+	--blog-caption-size: calc(0.94rem + var(--site-font-bump, 0px));
 	--blog-quote-size: 1em;
-	--blog-footnote-popup-size: 0.9rem;
+	--blog-footnote-popup-size: calc(0.9rem + var(--site-font-bump, 0px));
 	--blog-inline-code-size: 0.84em;
 	--blog-block-code-size: 0.82em;
 }
@@ -344,7 +348,7 @@ a:hover {
 
 .footnotes-label {
 	margin: 0 0 0.75rem;
-	font-size: 0.86rem;
+	font-size: calc(0.86rem + var(--site-font-bump, 0px));
 	letter-spacing: 0.02em;
 	color: #666;
 }
@@ -407,7 +411,7 @@ a:hover {
 .footnote-popup-link {
 	display: inline;
 	margin-left: 0.2rem;
-	font-size: 0.92rem;
+	font-size: calc(0.92rem + var(--site-font-bump, 0px));
 	line-height: 1;
 }
 
@@ -426,7 +430,7 @@ a:hover {
 	background: rgba(255, 255, 255, 0.88);
 	color: #666;
 	font-family: inherit;
-	font-size: 0.98rem;
+	font-size: calc(0.98rem + var(--site-font-bump, 0px));
 	line-height: 1;
 	padding: 0.18rem 0.24rem;
 	cursor: pointer;
@@ -549,7 +553,7 @@ a:hover {
 		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 		color: #444;
 		font-family: inherit;
-		font-size: 1.1rem;
+		font-size: calc(1.1rem + var(--site-font-bump, 0px));
 		opacity: 0;
 		pointer-events: none;
 		transform: translateY(-0.35rem);
@@ -613,7 +617,7 @@ a:hover {
 		background: transparent;
 		color: #666;
 		font-family: inherit;
-		font-size: 1.4rem;
+		font-size: calc(1.4rem + var(--site-font-bump, 0px));
 		line-height: 1;
 		padding: 0.2rem 0.35rem;
 	}
@@ -641,19 +645,19 @@ a:hover {
 
 @media (max-width: 640px) {
 	html {
-		--blog-body-size: 19px;
-		--blog-meta-size: 1.18rem;
-		--blog-toc-size: 1.18rem;
-		--blog-page-title-size: 2.14rem;
-		--blog-card-title-size: 1.46rem;
-		--blog-h1-size: 1.88rem;
-		--blog-h2-size: 1.5rem;
-		--blog-h3-size: 1.34rem;
-		--blog-h4-size: 1.22rem;
-		--blog-h5-size: 1.08rem;
-		--blog-caption-size: 1rem;
+		--blog-body-size: calc(19px + var(--site-font-bump, 0px));
+		--blog-meta-size: calc(1.18rem + var(--site-font-bump, 0px));
+		--blog-toc-size: calc(1.18rem + var(--site-font-bump, 0px));
+		--blog-page-title-size: calc(2.14rem + var(--site-font-bump, 0px));
+		--blog-card-title-size: calc(1.46rem + var(--site-font-bump, 0px));
+		--blog-h1-size: calc(1.88rem + var(--site-font-bump, 0px));
+		--blog-h2-size: calc(1.5rem + var(--site-font-bump, 0px));
+		--blog-h3-size: calc(1.34rem + var(--site-font-bump, 0px));
+		--blog-h4-size: calc(1.22rem + var(--site-font-bump, 0px));
+		--blog-h5-size: calc(1.08rem + var(--site-font-bump, 0px));
+		--blog-caption-size: calc(1rem + var(--site-font-bump, 0px));
 		--blog-quote-size: 1em;
-		--blog-footnote-popup-size: 0.98rem;
+		--blog-footnote-popup-size: calc(0.98rem + var(--site-font-bump, 0px));
 		--blog-inline-code-size: 0.84em;
 		--blog-block-code-size: 0.82em;
 	}
