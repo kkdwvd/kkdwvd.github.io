@@ -13,15 +13,15 @@ html {
 	--blog-caption-size: 0.94rem;
 	--blog-quote-size: 1em;
 	--blog-footnote-popup-size: 0.9rem;
-	--blog-inline-code-size: 0.68em;
-	--blog-block-code-size: 0.6rem;
+	--blog-inline-code-size: 0.84em;
+	--blog-block-code-size: 0.82em;
 }
 
 body {
 	margin: 0;
 	background: #fff;
 	color: #111;
-	font-family: "Times New Roman", Times, serif;
+	font-family: var(--site-serif, "Times New Roman", Times, serif);
 	font-size: var(--blog-body-size);
 	line-height: var(--blog-body-line-height);
 }
@@ -654,8 +654,8 @@ a:hover {
 		--blog-caption-size: 1rem;
 		--blog-quote-size: 1em;
 		--blog-footnote-popup-size: 0.98rem;
-		--blog-inline-code-size: 0.76em;
-		--blog-block-code-size: 0.82rem;
+		--blog-inline-code-size: 0.84em;
+		--blog-block-code-size: 0.82em;
 	}
 
 	.blog-shell,
