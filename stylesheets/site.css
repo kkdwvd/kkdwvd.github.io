@@ -25,12 +25,40 @@
 :root {
 	--site-serif: "et-book", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
 	--site-font-bump: 0px;
+	--site-article-body-size: calc(1rem + var(--site-font-bump, 0px));
+	--site-article-body-line-height: 1.4;
+	--site-article-meta-size: calc(1.08rem + var(--site-font-bump, 0px));
+	--site-article-toc-size: calc(1.08rem + var(--site-font-bump, 0px));
+	--site-article-page-title-size: calc(2.55rem + var(--site-font-bump, 0px));
+	--site-article-card-title-size: calc(1.28rem + var(--site-font-bump, 0px));
+	--site-article-h1-size: calc(1.75rem + var(--site-font-bump, 0px));
+	--site-article-h2-size: calc(1.35rem + var(--site-font-bump, 0px));
+	--site-article-h3-size: calc(1.22rem + var(--site-font-bump, 0px));
+	--site-article-h4-size: calc(1.1rem + var(--site-font-bump, 0px));
+	--site-article-h5-size: calc(1rem + var(--site-font-bump, 0px));
+	--site-article-caption-size: calc(0.94rem + var(--site-font-bump, 0px));
+	--site-article-quote-size: 1em;
+	--site-article-footnote-popup-size: calc(0.9rem + var(--site-font-bump, 0px));
+	--site-article-inline-code-size: calc(0.84rem + var(--site-font-bump, 0px));
+	--site-article-block-code-size: calc(0.9rem + var(--site-font-bump, 0px));
+	--site-article-tex-size: calc(1rem + var(--site-font-bump, 0px));
+	--site-article-display-tex-size: calc(1rem + var(--site-font-bump, 0px));
 	font-size: 100%;
 }
 
 @media (min-width: 1500px) {
 	:root {
 		font-size: clamp(100%, calc(81.25% + 0.2vw), 112.5%);
+	}
+}
+
+@media (max-width: 640px) {
+	:root {
+		--site-article-page-title-size: clamp(
+			calc(2rem + var(--site-font-bump, 0px)),
+			calc(6.5vw + var(--site-font-bump, 0px)),
+			calc(2.55rem + var(--site-font-bump, 0px))
+		);
 	}
 }
 

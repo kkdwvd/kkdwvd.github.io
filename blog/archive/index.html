@@ -12,7 +12,7 @@
 	</script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Blog | Kumar Kartikeya Dwivedi</title>
+	<title>Archive | Blog</title>
 	<link rel="stylesheet" href="/stylesheets/site.css?v=01d6d2ed709d">
 	<link rel="stylesheet" href="/stylesheets/blog.css?v=01d6d2ed709d">
 </head>
@@ -24,25 +24,21 @@
 <a href="/blog/archive/">Archive</a>
 </nav>
 <header class="dashboard-header">
-<h1>Blog</h1>
-<p>1 rendered essays from the public notes tree.</p>
-<label class="dashboard-search">
-<span>Search</span>
-<input type="search" id="note-search" placeholder="Search essays" data-search-index="/blog/search-index.json">
-</label>
-<p class="dashboard-search-status" id="search-status" aria-live="polite"></p>
+<h1>Archive</h1>
+<p>Dated essays grouped by year and month.</p>
 </header>
-<ul class="dashboard-list" id="note-list" data-search-index="/blog/search-index.json">
-<li class="dashboard-note" data-note-url="/blog/welcome/" data-search="welcome a short first post for the blog. 2026-04-09">
-	<h2><a href="/blog/welcome/">Welcome</a></h2>
-	<p class="dashboard-note-meta"><time datetime="2026-04-09">2026-04-09</time></p>
-	<p>A short first post for the blog.</p>
-	<div class="dashboard-matches" hidden></div>
-</li>
+<div class="archive-list">
+<section class="archive-year">
+<h2>2026</h2>
+<section class="archive-month">
+<h3>April</h3>
+<ul>
+<li class="archive-note"><a href="/blog/welcome/">Welcome</a><span class="dashboard-note-meta"><time datetime="2026-04-09">2026-04-09</time></span></li>
 </ul>
+</section>
+</section>
+</div>
 </main>
-
 <script src="/scripts/site.js"></script>
-<script src="/scripts/dashboard.js"></script>
 </body>
 </html>

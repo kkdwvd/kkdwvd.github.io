@@ -1,24 +1,22 @@
 html {
-	--blog-body-size: calc(1rem + var(--site-font-bump, 0px));
-	--blog-body-line-height: 1.4;
-	--blog-meta-size: calc(1.08rem + var(--site-font-bump, 0px));
-	--blog-toc-size: calc(1.08rem + var(--site-font-bump, 0px));
-	--blog-page-title-size: clamp(
-		calc(2rem + var(--site-font-bump, 0px)),
-		calc(4vw + var(--site-font-bump, 0px)),
-		calc(2.55rem + var(--site-font-bump, 0px))
-	);
-	--blog-card-title-size: calc(1.28rem + var(--site-font-bump, 0px));
-	--blog-h1-size: calc(1.75rem + var(--site-font-bump, 0px));
-	--blog-h2-size: calc(1.35rem + var(--site-font-bump, 0px));
-	--blog-h3-size: calc(1.22rem + var(--site-font-bump, 0px));
-	--blog-h4-size: calc(1.1rem + var(--site-font-bump, 0px));
-	--blog-h5-size: calc(1rem + var(--site-font-bump, 0px));
-	--blog-caption-size: calc(0.94rem + var(--site-font-bump, 0px));
-	--blog-quote-size: 1em;
-	--blog-footnote-popup-size: calc(0.9rem + var(--site-font-bump, 0px));
-	--blog-inline-code-size: 0.84em;
-	--blog-block-code-size: calc(0.82em + 1pt);
+	--blog-body-size: var(--site-article-body-size);
+	--blog-body-line-height: var(--site-article-body-line-height);
+	--blog-meta-size: var(--site-article-meta-size);
+	--blog-toc-size: var(--site-article-toc-size);
+	--blog-page-title-size: var(--site-article-page-title-size);
+	--blog-card-title-size: var(--site-article-card-title-size);
+	--blog-h1-size: var(--site-article-h1-size);
+	--blog-h2-size: var(--site-article-h2-size);
+	--blog-h3-size: var(--site-article-h3-size);
+	--blog-h4-size: var(--site-article-h4-size);
+	--blog-h5-size: var(--site-article-h5-size);
+	--blog-caption-size: var(--site-article-caption-size);
+	--blog-quote-size: var(--site-article-quote-size);
+	--blog-footnote-popup-size: var(--site-article-footnote-popup-size);
+	--blog-inline-code-size: var(--site-article-inline-code-size);
+	--blog-block-code-size: var(--site-article-block-code-size);
+	--blog-tex-size: var(--site-article-tex-size);
+	--blog-display-tex-size: var(--site-article-display-tex-size);
 }
 
 body {
@@ -332,6 +330,18 @@ a:hover {
 	background: #f2f2f2;
 	padding: 0.12rem 0.28rem;
 	border-radius: 0;
+}
+
+.post-body :where(.katex, .math, .math-inline, .tex) {
+	font-size: var(--blog-tex-size);
+}
+
+.post-body :where(.katex-display, .math-display) {
+	font-size: var(--blog-display-tex-size);
+}
+
+.post-body :where(.katex-display, .math-display) :where(.katex, .math, .math-inline, .tex) {
+	font-size: inherit;
 }
 
 .footnote-ref {
@@ -677,6 +687,7 @@ a:hover {
 }
 
 .dashboard-header p,
+.dashboard-note-meta,
 .dashboard-path,
 .note-source {
 	color: #666;
@@ -703,8 +714,16 @@ a:hover {
 	font: inherit;
 }
 
+.dashboard-search-status {
+	min-height: 1.2em;
+	margin: 0.45rem 0 0;
+	font-size: calc(0.9rem + var(--site-font-bump, 0px));
+	color: #666;
+}
+
 .dashboard-list,
-.dashboard-tree {
+.dashboard-tree,
+.archive-list ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -725,6 +744,14 @@ a:hover {
 	margin: 0.35rem 0 0;
 }
 
+.dashboard-note-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.35rem 0.75rem;
+	font-size: calc(0.92rem + var(--site-font-bump, 0px));
+}
+
 .path-trails {
 	display: flex;
 	flex-wrap: wrap;
@@ -743,7 +770,8 @@ a:hover {
 	color: #555;
 }
 
-.path-separator {
+.path-separator,
+.meta-separator {
 	color: #999;
 }
 
@@ -774,8 +802,71 @@ a:hover {
 	line-height: 1.35;
 }
 
+.dashboard-matches {
+	display: grid;
+	gap: 0.25rem;
+	margin-top: 0.55rem;
+	font-size: calc(0.92rem + var(--site-font-bump, 0px));
+	color: #444;
+}
+
+.dashboard-match {
+	line-height: 1.35;
+}
+
+mark {
+	padding: 0 0.08em;
+	background: #fff2a8;
+	color: inherit;
+}
+
 .dashboard-note.is-hidden {
 	display: none;
+}
+
+.archive-year {
+	margin-top: 1.4rem;
+}
+
+.archive-year:first-child {
+	margin-top: 0;
+}
+
+.archive-year h2 {
+	margin: 0 0 0.75rem;
+	font-size: calc(1.45rem + var(--site-font-bump, 0px));
+	line-height: 1.15;
+	font-weight: normal;
+}
+
+.archive-month {
+	margin: 0 0 1rem;
+}
+
+.archive-month h3 {
+	margin: 0 0 0.4rem;
+	font-size: calc(1rem + var(--site-font-bump, 0px));
+	font-weight: normal;
+	color: #555;
+}
+
+.archive-note {
+	display: grid;
+	grid-template-columns: minmax(11rem, 1fr) minmax(0, 2fr);
+	gap: 0.6rem 1rem;
+	padding: 0.35rem 0;
+	border-top: 1px solid #e6e6e6;
+}
+
+.archive-note > .dashboard-note-meta {
+	margin: 0;
+}
+
+@media (max-width: 640px) {
+	.archive-note {
+		grid-template-columns: 1fr;
+		gap: 0.25rem;
+	}
 }
 
 .note-source {
