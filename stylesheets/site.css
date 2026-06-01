@@ -29,7 +29,7 @@
 
 @media (max-width: 640px) {
 	:root {
-		--site-font-bump: 2pt;
+		--site-font-bump: 1pt;
 	}
 }
 
