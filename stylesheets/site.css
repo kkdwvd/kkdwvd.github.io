@@ -24,12 +24,12 @@
 
 :root {
 	--site-serif: "et-book", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-	--site-font-bump: 2pt;
+	--site-font-bump: 1pt;
 }
 
 @media (max-width: 640px) {
 	:root {
-		--site-font-bump: 3pt;
+		--site-font-bump: 2pt;
 	}
 }
 
