@@ -644,24 +644,6 @@ a:hover {
 }
 
 @media (max-width: 640px) {
-	html {
-		--blog-body-size: calc(19px + var(--site-font-bump, 0px));
-		--blog-meta-size: calc(1.18rem + var(--site-font-bump, 0px));
-		--blog-toc-size: calc(1.18rem + var(--site-font-bump, 0px));
-		--blog-page-title-size: calc(2.14rem + var(--site-font-bump, 0px));
-		--blog-card-title-size: calc(1.46rem + var(--site-font-bump, 0px));
-		--blog-h1-size: calc(1.88rem + var(--site-font-bump, 0px));
-		--blog-h2-size: calc(1.5rem + var(--site-font-bump, 0px));
-		--blog-h3-size: calc(1.34rem + var(--site-font-bump, 0px));
-		--blog-h4-size: calc(1.22rem + var(--site-font-bump, 0px));
-		--blog-h5-size: calc(1.08rem + var(--site-font-bump, 0px));
-		--blog-caption-size: calc(1rem + var(--site-font-bump, 0px));
-		--blog-quote-size: 1em;
-		--blog-footnote-popup-size: calc(0.98rem + var(--site-font-bump, 0px));
-		--blog-inline-code-size: 0.84em;
-		--blog-block-code-size: calc(0.82em + 1pt);
-	}
-
 	.blog-shell,
 	.blog-index {
 		width: min(100vw - 2rem, 44rem);
