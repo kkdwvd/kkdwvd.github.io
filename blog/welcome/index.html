@@ -144,7 +144,7 @@ const openFootnotePopup = (link) => {
   const key = link.getAttribute('data-footnote-key') || '';
   const number = link.getAttribute('data-footnote-number') || '';
   footnotePopup.querySelector('.footnote-popup-body').innerHTML =
-    preview + ' <a class="footnote-popup-link" href="#fn-' + key + '" aria-label="Jump to note [' + number + ']">↪</a>';
+    preview + ' <a class="footnote-popup-link" href="#fn-' + key + '" aria-label="Jump to note [' + number + ']">\u21aa</a>';
   if (window.innerWidth > 900) {
     const rect = link.getBoundingClientRect();
     footnotePopup.style.left = Math.min(rect.left + window.scrollX, window.scrollX + window.innerWidth - 320) + 'px';
@@ -157,7 +157,7 @@ const openFootnotePopup = (link) => {
 };
 
 for (const button of codeCopyButtons) {
-  const defaultLabel = '⧉';
+  const defaultLabel = '\u29c9';
   button.textContent = defaultLabel;
   button.addEventListener('click', async () => {
     const block = button.closest('.code-block');
@@ -166,14 +166,10 @@ for (const button of codeCopyButtons) {
     try {
       await navigator.clipboard.writeText(code);
       button.classList.add('copied');
-      window.setTimeout(() => {
-        button.classList.remove('copied');
-      }, 1600);
+      window.setTimeout(() => button.classList.remove('copied'), 1600);
     } catch (_error) {
       button.textContent = '!';
-      window.setTimeout(() => {
-        button.textContent = defaultLabel;
-      }, 1600);
+      window.setTimeout(() => { button.textContent = defaultLabel; }, 1600);
     }
   });
 }
@@ -206,10 +202,7 @@ if (tocLinks.length && headings.length) {
     const visibleTop = container.scrollTop + buffer;
     const visibleBottom = container.scrollTop + container.clientHeight - buffer;
     if (linkTop < visibleTop) {
-      container.scrollTo({
-        top: Math.max(0, linkTop - buffer),
-        behavior: 'smooth',
-      });
+      container.scrollTo({ top: Math.max(0, linkTop - buffer), behavior: 'smooth' });
     } else if (linkBottom > visibleBottom) {
       container.scrollTo({
         top: Math.min(container.scrollHeight - container.clientHeight, linkBottom - container.clientHeight + buffer),
@@ -232,12 +225,9 @@ if (tocLinks.length && headings.length) {
     for (const link of tocLinks) {
       const active = link.getAttribute('href') === '#' + id;
       link.classList.toggle('active', active);
-      if (active) {
-        revealTocLink(link);
-      }
+      if (active) revealTocLink(link);
     }
   };
-
   const syncActive = () => {
     if (Date.now() < ignoreScrollUntil && pinnedId) {
       setActive(pinnedId);

@@ -27,6 +27,12 @@
 	--site-font-bump: 2pt;
 }
 
+@media (max-width: 640px) {
+	:root {
+		--site-font-bump: 3pt;
+	}
+}
+
 .page-progress {
 	position: fixed;
 	top: 0;
