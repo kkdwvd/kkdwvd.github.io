@@ -2,7 +2,6 @@ html {
 	--blog-body-size: var(--site-article-body-size);
 	--blog-body-line-height: var(--site-article-body-line-height);
 	--blog-meta-size: var(--site-article-meta-size);
-	--blog-toc-size: var(--site-article-toc-size);
 	--blog-page-title-size: var(--site-article-page-title-size);
 	--blog-card-title-size: var(--site-article-card-title-size);
 	--blog-h1-size: var(--site-article-h1-size);
@@ -48,47 +47,11 @@ a:hover {
 	position: relative;
 }
 
-.blog-sidebar {
-	position: relative;
-	min-width: 0;
-	transition: opacity 180ms ease;
-}
-
-.sidebar-head {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 0.75rem;
-}
-
-.sidebar-inner {
-	position: fixed;
-	top: 50%;
-	left: max(0.5rem, calc((50vw - 36rem) / 2));
-	width: 14rem;
-	max-height: calc(100vh - 4rem);
-	padding: 0.45rem 0.8rem 0.45rem 0.2rem;
-	overflow-y: auto;
-	scrollbar-width: none;
-	-ms-overflow-style: none;
-	transform: translateY(-50%);
-	transition: opacity 180ms ease, transform 220ms ease;
-}
-
-.sidebar-inner::-webkit-scrollbar {
-	display: none;
-}
-
 .blog-main {
 	min-width: 0;
 	width: 100%;
 	max-width: 44rem;
 	margin: 0 auto;
-}
-
-.mobile-toc-toggle,
-.mobile-toc-overlay {
-	display: none;
 }
 
 .sidebar-label,
@@ -127,44 +90,10 @@ a:hover {
 	color: #999;
 }
 
-.toc,
 .post-list {
 	margin: 1rem 0 0;
 	padding: 0;
 	list-style: none;
-}
-
-.toc-item {
-	margin: 0.15rem 0;
-}
-
-.toc a,
-.toc span {
-	display: block;
-	font-size: var(--blog-toc-size);
-	padding: 0.18rem 0 0.18rem 0.8rem;
-	color: #777;
-	border-left: 2px solid transparent;
-	transition: color 120ms ease, border-color 120ms ease;
-}
-
-.toc a.active,
-.toc a:hover {
-	color: #111;
-	border-left-color: #999;
-}
-
-.toc-depth-3 a {
-	padding-left: 1.6rem;
-}
-
-.toc-depth-4 a {
-	padding-left: 2.35rem;
-}
-
-.toc-depth-5 a,
-.toc-depth-6 a {
-	padding-left: 3.1rem;
 }
 
 .post-header h1,
@@ -537,103 +466,9 @@ a:hover {
 	margin-bottom: 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1180px) {
 	.blog-shell {
 		display: block;
-	}
-
-	.blog-sidebar {
-		display: none;
-	}
-
-	.mobile-toc-toggle {
-		display: inline-flex;
-		position: fixed;
-		top: 1rem;
-		right: 1rem;
-		z-index: 30;
-		align-items: center;
-		justify-content: center;
-		width: 2.5rem;
-		height: 2.5rem;
-		padding: 0;
-		border: 1px solid #ddd;
-		border-radius: 999px;
-		background: rgba(255, 255, 255, 0.96);
-		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-		color: #444;
-		font-family: inherit;
-		font-size: calc(1.1rem + var(--site-font-bump, 0px));
-		opacity: 0;
-		pointer-events: none;
-		transform: translateY(-0.35rem);
-		transition: opacity 120ms ease, transform 120ms ease;
-	}
-
-	.mobile-toc-toggle::before {
-		content: "≡";
-		line-height: 1;
-	}
-
-	.mobile-toc-toggle.visible {
-		opacity: 1;
-		pointer-events: auto;
-		transform: translateY(0);
-	}
-
-	.mobile-toc-overlay {
-		display: block;
-		position: fixed;
-		inset: 0;
-		z-index: 40;
-		background: rgba(17, 17, 17, 0.26);
-		opacity: 0;
-		pointer-events: none;
-		transition: opacity 120ms ease;
-	}
-
-	.mobile-toc-overlay.open {
-		opacity: 1;
-		pointer-events: auto;
-	}
-
-	.mobile-toc-panel {
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: min(22rem, calc(100vw - 2rem));
-		height: 100%;
-		background: #fff;
-		padding: 1rem 1rem 1.25rem;
-		box-shadow: -10px 0 26px rgba(0, 0, 0, 0.1);
-		transform: translateX(100%);
-		transition: transform 160ms ease;
-		overflow-y: auto;
-	}
-
-	.mobile-toc-overlay.open .mobile-toc-panel {
-		transform: translateX(0);
-	}
-
-	.mobile-toc-header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		margin-bottom: 0.75rem;
-	}
-
-	.mobile-toc-close {
-		border: 0;
-		background: transparent;
-		color: #666;
-		font-family: inherit;
-		font-size: calc(1.4rem + var(--site-font-bump, 0px));
-		line-height: 1;
-		padding: 0.2rem 0.35rem;
-	}
-
-	.mobile-toc-panel .toc {
-		margin-top: 0.5rem;
 	}
 
 	.footnote-popup {
@@ -670,9 +505,14 @@ a:hover {
 .dashboard-nav {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 1rem;
+	align-items: baseline;
+	gap: 0.35rem;
 	margin-bottom: 1.8rem;
 	font-size: calc(1rem + var(--site-font-bump, 0px));
+}
+
+.dashboard-nav-separator {
+	color: #999;
 }
 
 .dashboard-header {
@@ -856,10 +696,12 @@ mark {
 	gap: 0.6rem 1rem;
 	padding: 0.35rem 0;
 	border-top: 1px solid #e6e6e6;
+	font-size: var(--blog-body-size);
 }
 
 .archive-note > .dashboard-note-meta {
 	margin: 0;
+	font-size: var(--blog-body-size);
 }
 
 @media (max-width: 640px) {
