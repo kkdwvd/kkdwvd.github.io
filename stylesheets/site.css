@@ -24,7 +24,7 @@
 
 :root {
 	--site-serif: "et-book", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-	--site-font-bump: 1pt;
+	--site-font-bump: 2pt;
 }
 
 .page-progress {
