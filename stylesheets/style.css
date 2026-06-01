@@ -3,7 +3,7 @@ body {
 	background: #fff;
 	color: #111;
 	font-family: var(--site-serif, "Times New Roman", Times, serif);
-	font-size: calc(16px + var(--site-font-bump, 0px));
+	font-size: calc(1rem + var(--site-font-bump, 0px));
 	line-height: 1.4;
 }
 

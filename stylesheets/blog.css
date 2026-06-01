@@ -1,5 +1,5 @@
 html {
-	--blog-body-size: calc(16px + var(--site-font-bump, 0px));
+	--blog-body-size: calc(1rem + var(--site-font-bump, 0px));
 	--blog-body-line-height: 1.4;
 	--blog-meta-size: calc(1.08rem + var(--site-font-bump, 0px));
 	--blog-toc-size: calc(1.08rem + var(--site-font-bump, 0px));
