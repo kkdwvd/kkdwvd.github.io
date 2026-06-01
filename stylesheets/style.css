@@ -22,7 +22,7 @@ h1, h2 {
 
 h1 {
 	margin: 0 0 0.45rem;
-	font-size: calc(2.05rem + var(--site-font-bump, 0px));
+	font-size: calc(2.05rem + var(--site-font-bump, 0px) - 1pt);
 	line-height: 1.04;
 }
 
