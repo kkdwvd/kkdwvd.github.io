@@ -678,9 +678,7 @@ a:hover {
 
 .dashboard-header p,
 .dashboard-path,
-.dashboard-tags,
-.note-source,
-.note-tags {
+.note-source {
 	color: #666;
 }
 
@@ -706,8 +704,7 @@ a:hover {
 }
 
 .dashboard-list,
-.dashboard-tree,
-.dashboard-tag-index {
+.dashboard-tree {
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -728,27 +725,26 @@ a:hover {
 	margin: 0.35rem 0 0;
 }
 
-.dashboard-tags,
-.note-tags {
+.path-trails {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.45rem;
-}
-
-.dashboard-tags a,
-.note-tags a,
-.dashboard-tag-index a {
-	color: #163d8f;
-}
-
-.dashboard-tag-index li {
-	display: flex;
+	gap: 0.35rem 0.65rem;
 	align-items: baseline;
-	justify-content: space-between;
-	gap: 1rem;
-	max-width: 26rem;
-	padding: 0.35rem 0;
-	border-bottom: 1px solid #e6e6e6;
+}
+
+.path-trail {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.28rem;
+}
+
+.path-part {
+	color: #555;
+}
+
+.path-separator {
+	color: #999;
 }
 
 .dashboard-tree details {
@@ -760,6 +756,10 @@ a:hover {
 	color: #333;
 }
 
+.dashboard-tree summary.path-trail {
+	display: inline-flex;
+}
+
 .dashboard-tree ul {
 	margin: 0.25rem 0 0.55rem 1.2rem;
 	padding: 0;
@@ -768,6 +768,10 @@ a:hover {
 
 .dashboard-tree li {
 	margin: 0.2rem 0;
+}
+
+.dashboard-tree-note {
+	line-height: 1.35;
 }
 
 .dashboard-note.is-hidden {
