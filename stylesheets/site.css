@@ -25,6 +25,7 @@
 :root {
 	--site-serif: "et-book", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
 	--site-font-bump: 1pt;
+	--site-article-content-width: 50rem;
 	--site-article-body-size: calc(1rem + var(--site-font-bump, 0px));
 	--site-article-body-line-height: 1.4;
 	--site-article-meta-size: calc(1.08rem + var(--site-font-bump, 0px));
