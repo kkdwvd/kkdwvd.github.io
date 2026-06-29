@@ -1,4 +1,19 @@
 (function () {
+  const liveEvents = document.querySelector('meta[name="kkd-notes-live-events"]');
+  const liveEventsUrl = liveEvents?.getAttribute("content");
+  if (!liveEventsUrl || !window.EventSource) return;
+
+  let reloadScheduled = false;
+  const events = new EventSource(liveEventsUrl);
+
+  events.addEventListener("reload", () => {
+    if (reloadScheduled) return;
+    reloadScheduled = true;
+    window.setTimeout(() => window.location.reload(), 100);
+  });
+})();
+
+(function () {
   const search = document.getElementById("note-search");
   const list = document.getElementById("note-list");
   const status = document.getElementById("search-status");
@@ -26,7 +41,7 @@
 
   const searchText = (entry) => {
     if (!entry.searchText) {
-      entry.searchText = normalize([entry.title, entry.summary, entry.date, pathText(entry), entry.body].filter(Boolean).join(" "));
+      entry.searchText = normalize([entry.title, entry.summary, entry.date, pathText(entry), entry.metadata, entry.body].filter(Boolean).join(" "));
     }
     return entry.searchText;
   };
@@ -65,6 +80,7 @@
       [entry.title || "", false],
       [entry.date || "", false],
       [pathText(entry), false],
+      [entry.metadata || "", false],
       [entry.summary || "", false],
       [entry.body || "", true],
     ];

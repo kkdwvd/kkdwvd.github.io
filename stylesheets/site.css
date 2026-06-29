@@ -46,6 +46,12 @@
 	font-size: 100%;
 }
 
+@media (min-width: 641px) {
+	:root {
+		--site-font-bump: 3pt;
+	}
+}
+
 @media (max-width: 640px) {
 	:root {
 		--site-article-page-title-size: clamp(
