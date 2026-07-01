@@ -4,11 +4,26 @@
   if (!liveEventsUrl || !window.EventSource) return;
 
   let reloadScheduled = false;
+  let navigationStarted = false;
   const events = new EventSource(liveEventsUrl);
+  const closeEvents = () => events.close();
+
+  window.addEventListener("pagehide", closeEvents, { once: true });
+  window.addEventListener("beforeunload", closeEvents, { once: true });
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+    const href = link.getAttribute("href") || "";
+    if (!href || href.startsWith("#")) return;
+    navigationStarted = true;
+    closeEvents();
+  }, { capture: true });
 
   events.addEventListener("reload", () => {
+    if (navigationStarted) return;
     if (reloadScheduled) return;
     reloadScheduled = true;
+    closeEvents();
     window.setTimeout(() => window.location.reload(), 100);
   });
 })();
